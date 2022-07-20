@@ -1,0 +1,86 @@
+---
+// Component Imports
+import Layout from '../layout.astro';
+import Gallery from '../components/gallery.tsx'
+const images = [
+	'/assets/2011/1.jpg',
+	'/assets/2011/2.jpg',
+	'/assets/2011/3.jpg',
+	'/assets/2011/4.jpg',
+	'/assets/2011/5.jpg',
+	'/assets/2011/6.jpg',
+	'/assets/2011/7.jpg',
+	'/assets/2011/8.jpg',
+	'/assets/2013/1.jpg',
+	'/assets/2013/2.jpg',
+	'/assets/2013/3.jpg',
+	'/assets/2013/4.jpg',
+	'/assets/2013/5.jpg',
+	'/assets/2013/6.jpg',
+	'/assets/2013/7.jpg',
+	'/assets/2013/8.jpg',
+]
+---
+
+<Layout title="AstroWind — Your website with Astro + Tailwind CSS">
+	<main class="mx-12 mt-20">
+		<Gallery images={images}>
+			<div>
+				<h1 class="text-6xl md:text-[9rem] whitespace-nowrap">
+					Eddie
+					<span class="text-orange-400">Bollier</span>
+				</h1>
+				<h2 class="text-5xl">Solothurn</h2>
+				<p class="mt-2">
+					Ich bin ständig auf der Suche nach Neuem, nach Veränderung und nach
+					Eigenständigkeit und setze meine Arbeit vielschichtig auf Leinwänden
+					um. Mein Hauptaugenmerk gilt der abstrakten Acrylmalerei und dem
+					Spiel von Proportionen, Formen; der Auseinandersetzung zwischen
+					Unbändigkeit und Ruhe; zwischen Grafik und fliessenden Flächen.
+				</p>
+				<div class="text-right">
+					<a href="/kontakt" class="justify-end flex gap-2 hover:text-orange-500 transition duration-150 ease-in-out">
+						<span>Mehr</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" stroke-width="1">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</Gallery>
+		<div class="mt-32">
+			<div class="mb-8 text-center">
+				<h3 class="text-base text-orange-500 font-semibold tracking-wide uppercase">
+					Einblicke
+				</h3>
+				<h2 class="text-4xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4">
+					Atelier
+				</h2>
+				<p class="max-w-3xl mx-auto text-center">
+					Meine Bilder entstehen grösstenteils im Atelier der Kunstmalschule
+					A-13 in Altreu (Selzach). Hier habe ich ein geeignetes Umfeld und
+					einen inspirierenden Malort gefunden, in dem ich meinen kreativen
+					Prozessen freien Lauf lassen kann.
+				</p>
+				<p class="mt-2">
+					Atelier-13 Acryl Kunstmalschule Rolf Wullimann Selzacherstrasse 32
+					2545 Selzach
+				</p>
+				<p class="mt-2">
+					<a class="text-orange-500 mr-3" href="www.atelier-13.ch">
+						www.atelier-13.ch
+					</a>
+					<a class="text-orange-500" href="mailto:info@atelier-13.ch">
+						info@atelier-13.ch
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="mt-4 mb-4 md:mb-44 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+			<img src="/assets/s1.jpeg" loading="lazy" class="w-full md:w-auto" decoding="async" />
+			<img src="/assets/s3.jpeg" loading="lazy" class="w-full md:w-auto" decoding="async" />
+			<img src="/assets/s2.jpeg" loading="lazy" class="w-full md:w-auto" decoding="async" />
+		</div>
+	</main>
+</Layout>
