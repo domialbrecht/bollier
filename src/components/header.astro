@@ -15,11 +15,11 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname; // remove the first "/"
 ---
 
-<header class="relative z-40 flex-none mx-auto w-full border-b bg-slate-800">
+<header class="fixed top-0 z-40 flex-none mx-auto w-full border-b bg-primary">
   <div class="py-2 px-3 mx-auto w-full lg:flex lg:justify-end lg:px-4">
     <div class="flex justify-end">
       <div class="flex items-center lg:hidden">
-        <button class="ml-1 text-slate-100 rounded-lg text-sm p-2.5 inline-flex items-center" onclick="toggleMenu()">
+        <button class="ml-1 text-secondary rounded-lg text-sm p-2.5 inline-flex items-center" onclick="toggleMenu()">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="1.75" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -29,12 +29,13 @@ const currentPath = pathname; // remove the first "/"
         </button>
       </div>
     </div>
-    <div class="items-center w-full lg:w-auto text-slate-100 hidden lg:flex" id="menu">
+    <div class="items-center w-full lg:w-auto text-secondary hidden lg:flex bg-primary absolute lg:relative left-0"
+      id="menu">
       <ul class="flex flex-col py-2 lg:py-0 lg:flex-row lg:self-center collapse w-full lg:w-auto collapsed">
         {routes.map(route => (
         <li>
-          <a href={route.url} class={`font-medium uppercase hover:text-orange-500 px-4 py-2 flex items-center transition
-            duration-150 ease-in-out ${ currentPath===route.url ? 'text-orange-500' : '' }`}>
+          <a href={route.url} class={`font-medium uppercase hover:text-zinc-900 px-4 py-2 flex items-center transition
+            duration-150 ease-in-out ${ currentPath===route.url ? 'text-secondary' : '' }`}>
             {route.name}
           </a>
         </li>

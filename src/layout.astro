@@ -29,7 +29,7 @@ const { title = "", description = "", withHeader = true } = Astro.props;
     rel="stylesheet" />
 </head>
 
-<body class="overflow-x-hidden antialiased text-slate-100 tracking-tight bg-slate-800">
+<body class="overflow-x-hidden antialiased text-secondary tracking-tight bg-primary pt-10">
   <Header />
   <slot />
   <Footer />
@@ -54,8 +54,9 @@ const { title = "", description = "", withHeader = true } = Astro.props;
   }
 </style>
 
-<script>
+<script is:inline>
   function toggleMenu() {
     document.getElementById("menu").classList.toggle("hidden");
   }
+  window.toggleMenu = toggleMenu
 </script>
