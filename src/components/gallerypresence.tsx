@@ -1,6 +1,5 @@
 import {motion, AnimatePresence} from 'framer-motion'
 import {useState, useRef, useEffect, useCallback} from 'react'
-import library from '../../images.json'
 
 function Gallery({images}: {images: any[]}) {
   const [width, setWidth] = useState(0)
@@ -34,7 +33,7 @@ function Gallery({images}: {images: any[]}) {
               initial={{y: 200, opacity: 0}}
               animate={{y: 0, opacity: 1}}
               transition={{duration: 0.2, delay: i * 0.05}}
-              key={i}
+              key={p.src}
             >
               <img
                 alt="image"
@@ -53,7 +52,7 @@ function Gallery({images}: {images: any[]}) {
     </motion.div>
   )
 }
-export default function GalleryPresence() {
+export default function GalleryPresence({data}: {data: any[]}) {
   const [currentYear, setCurrentYear] = useState(0)
   return (
     <div>
@@ -78,20 +77,20 @@ export default function GalleryPresence() {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              <span>{library[currentYear - 1].title}</span>
+              <span>{data[currentYear - 1].title}</span>
             </div>
           )}
         </div>
         <div className="text-2xl flex justify-center col-span-2 md:col-span-1 order-first md:order-none">
-          <h3>{library[currentYear].title}</h3>
+          <h3>{data[currentYear].title}</h3>
         </div>
         <div className="flex justify-end">
-          {currentYear + 1 < library.length && (
+          {currentYear + 1 < data.length && (
             <div
               className="flex items-center text-xl hover:text-secondary hover:translate-x-2 cursor-pointer transition"
               onClick={() => setCurrentYear(currentYear + 1)}
             >
-              <span>{library[currentYear + 1].title}</span>
+              <span>{data[currentYear + 1].title}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-10"
@@ -111,7 +110,7 @@ export default function GalleryPresence() {
         </div>
       </div>
       <div className="mt-10 relative">
-        <Gallery images={library[currentYear].images.map(l => l)} />
+        <Gallery images={data[currentYear].images.map(l => l)} />
       </div>
     </div>
   )

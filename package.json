@@ -14,7 +14,9 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
-    "astro": "^1.0.0-beta.72"
+    "astro": "^1.0.0-beta.72",
+    "image-size": "^1.0.2",
+    "puppeteer": "^15.5.0"
   },
   "dependencies": {
     "@react-three/drei": "^9.17.1",
