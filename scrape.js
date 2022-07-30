@@ -44,7 +44,7 @@ const scrapeAusstellung = async ausstellung => {
 
     ausstellungImages.forEach((image, i) => {
       images.push({
-        src: image.src.split('?')[0],
+        src: '/' + image.src.split('?')[0],
         title: allCaptions[i].split('-')[0].trim(),
         description: `${allCaptions[i].split('-')[1].trim()} ${allCaptions[i]
           .split('-')[2]
@@ -64,6 +64,7 @@ async function fetchAll() {
   for (const ausstellung of austellungen) {
     const images = await scrapeAusstellung(ausstellung.path)
     allImages.push({
+      path: ausstellung.path,
       title: ausstellung.title,
       images: images,
     })

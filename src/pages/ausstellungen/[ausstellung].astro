@@ -1,0 +1,65 @@
+---
+import Layout from '../../layout.astro';
+import GalleryPresence from '../../components/gallerypresence.tsx'
+import data from '../../../output.json';
+export function getStaticPaths() {
+  const routes = data.map((ausstellung, i) => {
+    return {
+      params: {
+        ausstellung: ausstellung.path,
+      }
+    }
+  })
+  console.log(routes);
+  return routes;
+}
+const { ausstellung } = Astro.params;
+const current = data.find(a => a.path === ausstellung)
+const title = current.title
+const images = current.images;
+const index = data.findIndex(a => a.path === ausstellung);
+const next = data[index + 1];
+const prev = data[index - 1];
+---
+
+<Layout title="AstroWind — Your website with Astro + Tailwind CSS">
+  <main class="py-8 px-4 sm:px-6">
+    <div class="mb-20">
+      <h1 class="md:text-center text-6xl text-secondary">Bildergallerie</h1>
+    </div>
+    <div>
+      <div class="grid grid-cols-2 md:grid-cols-3 sticky bg-primary top-[57px] z-10">
+        <div class="flex">
+          {prev && (
+          <a class="flex items-center text-xl hover:text-secondary hover:translate-x-2 cursor-pointer transition block"
+            href={`/ausstellungen/${prev.path}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>{prev.title}</span>
+          </a>
+          )}
+        </div>
+        <div class="text-2xl flex justify-center col-span-2 md:col-span-1 order-first md:order-none">
+          <h3>{title}</h3>
+        </div>
+        <div class="flex justify-end">
+          {next && ( <a
+            class="flex items-center text-xl hover:text-secondary hover:translate-x-2 cursor-pointer transition"
+            href={`/ausstellungen/${next.path}`}>
+            <span>{next.title}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          )}
+        </div>
+      </div>
+      <div class="mt-10 relative">
+        <GalleryPresence data={images} client:load />
+      </div>
+    </div>
+  </main>
+</Layout>

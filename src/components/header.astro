@@ -1,14 +1,14 @@
 ---
+import data from '../../output.json';
 type Route = {
   url: string
   name: string
 }
-
 const routes: Route[] = [
   { url: '/', name: 'Home' },
   { url: '/aktuell', name: 'Aktuell' },
   { url: '/portrait', name: 'Portrait' },
-  { url: '/werke', name: 'Werke' },
+  { url: `/ausstellungen/${data[0].path}`, name: 'Werke' },
   { url: '/kontakt', name: 'Kontakt' },
 ]
 const pathname = new URL(Astro.request.url).pathname;
