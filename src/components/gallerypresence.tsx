@@ -8,6 +8,7 @@ export default function GalleryPresence({data}: {data: any[]}) {
     setWidth(carousel.current?.scrollWidth || 0)
   }, [carousel])
   useEffect(() => {
+    scaleCarousel()
     window.addEventListener('resize', scaleCarousel)
     return () => {
       window.removeEventListener('resize', scaleCarousel)
