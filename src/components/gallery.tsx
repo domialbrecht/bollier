@@ -5,7 +5,7 @@ export default function Gallery({
   children,
 }: {
   images: string[]
-  children?: JSX.Element
+  children?: any
 }) {
   const ref = useRef(null)
   return (
