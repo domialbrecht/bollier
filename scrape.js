@@ -61,16 +61,13 @@ const scrapeAusstellung = async ausstellung => {
 }
 
 async function fetchAll() {
-  await Promise.all(
-    austellungen.map(async ausstellung => {
-      const images = await scrapeAusstellung(ausstellung.path)
-      console.log(images)
-      allImages.push({
-        title: ausstellung.title,
-        images: images,
-      })
-    }),
-  )
+  for (const ausstellung of austellungen) {
+    const images = await scrapeAusstellung(ausstellung.path)
+    allImages.push({
+      title: ausstellung.title,
+      images: images,
+    })
+  }
 }
 
 async function generateImageOutput() {
