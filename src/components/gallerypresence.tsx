@@ -15,7 +15,7 @@ export default function GalleryPresence({data}: {data: any[]}) {
     }
   }, [carousel])
   return (
-    <motion.div className="cursor-grab overflow-hidden min-h-[500px]">
+    <motion.div className="cursor-grab md:overflow-hidden min-h-[500px]">
       <motion.div
         drag="x"
         ref={carousel}
@@ -25,12 +25,12 @@ export default function GalleryPresence({data}: {data: any[]}) {
         }}
         whileTap={{cursor: 'grabbing'}}
         onLoad={scaleCarousel}
-        className="flex gap-5"
+        className="sm:block md:flex gap-5 pointer-events-none md:pointer-events-auto"
       >
         <AnimatePresence exitBeforeEnter>
           {data.map((p, i) => (
             <motion.div
-              className="flex flex-col gap-4"
+              className="sm:block mb-6 md:mb-0 md:flex flex-col gap-4"
               initial={{y: 200, opacity: 0}}
               animate={{y: 0, opacity: 1}}
               transition={{duration: 0.2, delay: i * 0.05}}
@@ -40,7 +40,7 @@ export default function GalleryPresence({data}: {data: any[]}) {
                 alt="image"
                 src={p.src}
                 loading="lazy"
-                className="max-w-none object-cover w-auto pointer-events-none"
+                className="max-w-full md:max-w-none object-cover w-auto pointer-events-none"
                 decoding="async"
               />
               <p>
