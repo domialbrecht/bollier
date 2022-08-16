@@ -40,7 +40,7 @@ export default function GalleryPresence({data}: {data: any[]}) {
                 alt="image"
                 src={p.src}
                 loading="lazy"
-                className="max-w-full md:max-w-none object-cover w-auto pointer-events-none"
+                className="max-w-full md:max-w-none object-cover w-auto pointer-events-none mx:min-h-[500px]"
                 decoding="async"
               />
               <p>
